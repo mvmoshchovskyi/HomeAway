@@ -1,6 +1,6 @@
 function DarkMode() {
 	return (
-		<div></div>
+		<div>DarkMode</div>
 	);
 }
 

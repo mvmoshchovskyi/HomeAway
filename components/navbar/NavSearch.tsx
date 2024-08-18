@@ -1,6 +1,6 @@
 function NavSearch() {
 	return (
-		<div></div>
+		<div>NavSearch</div>
 	);
 }
 

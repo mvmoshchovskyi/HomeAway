@@ -1,6 +1,6 @@
 function LinksDropdown() {
 	return (
-		<div></div>
+		<div>LinksDropdown</div>
 	);
 }
 
