@@ -7,6 +7,13 @@ import { redirect } from 'next/navigation';
 
 import { profileSchema } from './schemas';
 
+const renderError = (error: unknown): { message: string } => {
+	console.log(error);
+	return {
+		message: error instanceof Error ? error.message : 'An error occurred',
+	};
+};
+
 export const getAuthUser =async() => {
 	const user = await currentUser();
 	if (!user) {
@@ -41,9 +48,7 @@ export const createProfileAction = async (
 			},
 		});
 	} catch (error) {
-		return {
-			message: error instanceof Error ? error.message : 'An error occurred',
-		};
+		renderError(error);
 	}
 	redirect('/');
 };
@@ -94,8 +99,6 @@ export const updateProfileAction = async (
 		revalidatePath('/profile');
 		return { message: 'Profile updated successfully' };
 	} catch (error) {
-		return {
-			message: error instanceof Error ? error.message : 'An error occurred',
-		};
+		return renderError(error);
 	}
 };
