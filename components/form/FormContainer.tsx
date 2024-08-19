@@ -20,6 +20,7 @@ function FormContainer({
 	const { toast } = useToast();
 
 	useEffect(() => {
+		console.log(state)
 		if (state.message) {
 			toast({ description: state.message });
 		}
