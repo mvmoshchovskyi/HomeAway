@@ -5330,7 +5330,7 @@ import {
 } from '@/utils/actions';
 import FormContainer from '@/components/form/FormContainer';
 import FormInput from '@/components/form/FormInput';
-import CategoriesInput from '@/components/form/CategoriesInput';
+import CategoriesInput from '@/components/form/CategoriesInput.tsx';
 import PriceInput from '@/components/form/PriceInput';
 import TextAreaInput from '@/components/form/TextAreaInput';
 import CountriesInput from '@/components/form/CountriesInput';
