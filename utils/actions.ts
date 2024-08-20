@@ -5,7 +5,7 @@ import { auth, clerkClient, currentUser } from '@clerk/nextjs/server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-import { profileSchema, validateWithZodSchema, imageSchema } from './schemas';
+import { profileSchema, validateWithZodSchema, imageSchema, propertySchema } from './schemas';
 import { uploadImage } from '@/utils/supabase';
 
 const renderError = (error: unknown): { message: string } => {
@@ -15,7 +15,7 @@ const renderError = (error: unknown): { message: string } => {
 	};
 };
 
-export const getAuthUser =async() => {
+export const getAuthUser = async () => {
 	const user = await currentUser();
 	if (!user) {
 		throw new Error('You must be logged in to access this route');
@@ -123,8 +123,22 @@ export const updateProfileImageAction = async (
 			},
 		});
 		revalidatePath('/profile');
-		return { message: 'Profile image updated successfully' };
+		return {message: 'Profile image updated successfully'};
 	} catch (error) {
 		return renderError(error);
 	}
+};
+
+export const createPropertyAction = async (
+	prevState: any,
+	formData: FormData
+): Promise<{ message: string }> => {
+	const user = await getAuthUser();
+	try {
+		const rawData = Object.fromEntries(formData);
+		const validatedFields = validateWithZodSchema(propertySchema, rawData);
+	} catch (error) {
+		return renderError(error);
+	}
+	redirect('/');
 };
