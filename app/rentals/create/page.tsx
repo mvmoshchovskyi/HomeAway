@@ -5,6 +5,8 @@ import { SubmitButton } from '@/components/form/Buttons';
 import PriceInput from '@/components/form/PriceInput';
 import CategoriesInput from '@/components/form/CategoriesInput';
 import TextAreaInput from '@/components/form/TextAreaInput';
+import ImageInput from '@/components/form/ImageInput';
+import CountriesInput from '@/components/form/CountriesInput';
 
 function CreateProperty() {
 	return (
@@ -33,7 +35,11 @@ function CreateProperty() {
 					</div>
 					{/* text area / description */}
 					<TextAreaInput name='description' labelText='Description (10 - 1000 Words)' />
-					<SubmitButton text='create rental' className='mt-12' />
+					<div className='grid sm:grid-cols-2 gap-8 mt-4'>
+						<CountriesInput/>
+						<ImageInput/>
+					</div>
+					<SubmitButton text='create rental' className='mt-12'/>
 				</FormContainer>
 			</div>
 		</section>
